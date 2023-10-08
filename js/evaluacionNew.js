@@ -147,6 +147,9 @@ const sizeQuiz = quizData.length
 const textAnws = []
 const textAnws2 = []
 
+var numAks = 0;
+const labelRespondidas = document.getElementById("idRespondidas")
+
 cargarQuiz()
 
 function cargarQuiz(){
@@ -251,7 +254,6 @@ function cargarQuiz(){
 
         document.getElementById('div-main').appendChild(div)
     }
-    
 }
 
 //Metódo para cargar el array de las preguntas
@@ -271,6 +273,8 @@ for (let i = 0; i < btns.length; i++) {
     btns[i].addEventListener('click', function (e) {
         checkAns(btns[i].value)
         btns[i].disabled = true
+        numAks = numAks+1
+        labelRespondidas.innerHTML = "Preguntas respondidas: "+ numAks
     });
 }
 //Escucha para los btns falso
@@ -279,6 +283,8 @@ for (let i = 0; i < btns.length; i++) {
     btns2[i].addEventListener('click', function (e) {
         checkAns2(btns2[i].value)
         btns[i].disabled = true
+        numAks = numAks+1
+        labelRespondidas.innerHTML = "Preguntas respondidas: "+ numAks
     });
 }
 
