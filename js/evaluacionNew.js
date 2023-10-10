@@ -149,8 +149,10 @@ const textAnws2 = []
 
 var numAks = 0;
 var preguntasCorrectas = 0;
+var puntuaje = 0;
 const labelRespondidas = document.getElementById("idRespondidas")
 const labelPorcentaje = document.getElementById("idPorcentaje")
+const labelPuntuaje = document.getElementById("idPuntuaje")
 
 cargarQuiz()
 
@@ -278,7 +280,7 @@ for (let i = 0; i < btns.length; i++) {
         numAks = numAks+1
         checkQuiz(quizData[i].correct, "a")
         labelRespondidas.innerHTML = "Preguntas respondidas: "+ numAks
-        labelPorcentaje.innerHTML = "Porcentaje: " + checkPorcentaje()
+        labelPorcentaje.innerHTML = "Porcentaje: " + checkPorcentaje()+"%"
     });
 }
 //Escucha para los btns falso
@@ -290,7 +292,7 @@ for (let i = 0; i < btns.length; i++) {
         numAks = numAks+1
         labelRespondidas.innerHTML = "Preguntas respondidas: "+ numAks
         checkQuiz(quizData[i].correct, "b")
-        labelPorcentaje.innerHTML = "Porcentaje: " + checkPorcentaje()
+        labelPorcentaje.innerHTML = "Porcentaje: " + checkPorcentaje()+"%"
     });
 }
 
@@ -309,7 +311,9 @@ function checkAns2(bt1){
 function checkQuiz(pregunta, respuesta){
     if(pregunta == respuesta){
         preguntasCorrectas = preguntasCorrectas + 1
+        puntuaje = puntuaje + 5 
     }
+    labelPuntuaje.innerHTML = "Puntuaje: "+ puntuaje +" Puntos"
    
 }
 
