@@ -154,6 +154,56 @@ const labelRespondidas = document.getElementById("idRespondidas")
 const labelPorcentaje = document.getElementById("idPorcentaje")
 const labelPuntuaje = document.getElementById("idPuntuaje")
 
+//Valores de tiempo---------------------------------------------------------------------------
+var seg = 0;
+var minutos = 0;
+var horas = 0; 
+const tiempoActualHoras = document.getElementById("tiempoActualHoras")
+const tiempoActualMinutos = document.getElementById("tiempoActualMinutos")
+const tiempoActualSegundos = document.getElementById("tiempoActualSegundos")
+
+//Cronometro----------------------------------------------------------------------------------
+function runTime(){
+    setInterval(() => {
+
+        if(seg<10){
+            seg++;
+            tiempoActualSegundos.innerText = "0"+seg;
+        }else{
+            seg++;
+            tiempoActualSegundos.innerText = seg;
+        }
+    
+        if(seg == 59){
+            minutos++
+            if(minutos<10){
+                tiempoActualMinutos.innerText = "0"+minutos
+            }else{
+                tiempoActualMinutos.innerText = minutos
+            }
+            seg = 0
+            tiempoActualSegundos.innerText = "00"
+        }
+
+        if(minutos == 59){
+            horas++
+            if(horas<10){
+                tiempoActualHoras.innerText = "0"+horas
+            }else{
+                tiempoActualHoras.innerText = horas
+            }
+            minutos = 0
+            tiempoActualMinutos.innerText = "00"
+        }
+
+        console.log(horas + ":" + minutos + ":" + seg)
+
+    }, 2000)
+}
+
+
+//Cargar cuestionario------------------------------------------------------------------------
+runTime()
 cargarQuiz()
 
 function cargarQuiz(){
