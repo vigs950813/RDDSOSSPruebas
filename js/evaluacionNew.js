@@ -162,6 +162,29 @@ const tiempoActualHoras = document.getElementById("tiempoActualHoras")
 const tiempoActualMinutos = document.getElementById("tiempoActualMinutos")
 const tiempoActualSegundos = document.getElementById("tiempoActualSegundos")
 
+//Fecha actual----------------------------------------------------------------------------
+var fecha;
+function obtenerFechaActual(){
+    //Obtenemos el input para insertar la fecha
+    const fechaActualContainer = document.getElementById("fechaActual")
+
+    //Obtenemos la fecha
+    const date = new Date();
+    const day = date.getDate();
+    const month = date.getMonth()+1;
+    const year = date.getFullYear();
+
+    //Damos formato a la fecha
+    fecha = `${day}/${month}/${year}`;
+
+    //Insertamos la fecha en el value
+    function insertarFechaActual(fechaDato){
+        fechaActualContainer.innerHTML = fechaDato;
+    }
+    insertarFechaActual(fecha);
+}
+//-------------------------------------------------------------------------------------------
+
 //Cronometro----------------------------------------------------------------------------------
 function runTime(){
     setInterval(() => {
@@ -204,6 +227,7 @@ function runTime(){
 
 //Cargar cuestionario------------------------------------------------------------------------
 runTime()
+obtenerFechaActual()
 cargarQuiz()
 
 function cargarQuiz(){
