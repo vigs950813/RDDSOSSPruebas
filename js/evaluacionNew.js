@@ -221,7 +221,7 @@ function runTime(){
 
         console.log(horas + ":" + minutos + ":" + seg)
 
-    }, 2000)
+    }, 1000)
 }
 
 
